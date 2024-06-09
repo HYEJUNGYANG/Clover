@@ -1,5 +1,6 @@
 import {colors} from '@/constants';
 import {SafeAreaView, Text} from 'react-native';
+import AuthStackNavigator from '../stack/AuthStackNavigator';
 
 function RootNavigator() {
   const isLogin = false; // 마크업 작업을 위한 임시 설정
@@ -12,10 +13,7 @@ function RootNavigator() {
           <Text style={{color: colors.BLACK}}>로그인 완료 👋🏻😖</Text>
         </SafeAreaView>
       ) : (
-        <SafeAreaView
-          style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-          <Text style={{color: colors.BLACK}}>로그인 하러가기 ✨</Text>
-        </SafeAreaView>
+        <AuthStackNavigator />
       )}
     </>
   );
