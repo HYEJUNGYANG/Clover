@@ -1,13 +1,11 @@
 import {colors, styleValues} from '@/constants';
-import React, {useState} from 'react';
+import React, {ReactNode, useState} from 'react';
 import {
-  Keyboard,
+  Pressable,
   StyleSheet,
   Text,
   TextInput,
   TextInputProps,
-  TouchableOpacity,
-  TouchableWithoutFeedback,
   View,
 } from 'react-native';
 
@@ -15,12 +13,14 @@ interface InputFieldProps extends TextInputProps {
   disabled?: boolean;
   error?: string;
   touched?: boolean;
+  icon?: ReactNode;
 }
 
 function InputField({
   disabled = false,
   error,
   touched,
+  icon = null,
   ...props
 }: InputFieldProps) {
   const [isFocused, setIsFocused] = useState(false);
@@ -37,6 +37,7 @@ function InputField({
             disabled ? styles.disabled : styles.inputStyle,
             isFocused && styles.focused,
             !!error && styles.inputError,
+            Boolean(icon) && {paddingRight: 58},
           ]}
           placeholderTextColor={colors.GRAY_300}
           onFocus={() => setIsFocused(true)}
@@ -45,6 +46,7 @@ function InputField({
           autoCorrect={false}
           {...props}
         />
+        {icon && icon}
       </View>
       <View style={styles.errorContainer}>
         {Boolean(error) && <Text style={styles.errorText}>*{error}</Text>}

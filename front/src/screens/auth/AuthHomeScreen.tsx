@@ -16,7 +16,7 @@ import {
   useSafeAreaInsets,
 } from 'react-native-safe-area-context';
 
-type AuthHomeScreenProps = StackScreenProps<
+export type AuthHomeScreenProps = StackScreenProps<
   AuthStackParamList,
   typeof authNavigations.AUTH_HOME
 >;
@@ -78,7 +78,10 @@ function AuthHomeScreen({navigation}: AuthHomeScreenProps) {
           <Text style={styles.lineText}>또는</Text>
           <View style={styles.line} />
         </View>
-        <CustomButton label="이메일로 회원가입" />
+        <CustomButton
+          label="이메일로 회원가입"
+          onPress={() => navigation.navigate(authNavigations.SIGN_UP)}
+        />
       </View>
       <View style={styles.loginContainer}>
         <View style={styles.loginAlignContainer}>

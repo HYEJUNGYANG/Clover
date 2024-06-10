@@ -1,5 +1,5 @@
 import InputField from '@/components/common/InputField';
-import {colors, styleValues} from '@/constants';
+import {authNavigations, colors, styleValues} from '@/constants';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import React, {useState} from 'react';
 import {
@@ -12,13 +12,20 @@ import {
   View,
 } from 'react-native';
 import CustomButton from '@/components/common/CustomButton';
-
-interface LoginScreenProps {}
+import {StackNavigationProp} from '@react-navigation/stack';
+import {AuthStackParamList} from '@/navigations/stack/AuthStackNavigator';
+import {useNavigation} from '@react-navigation/native';
+import ShowPasswordIcon from '@/components/common/ShowPasswordIcon';
 
 const deviceHeight = Dimensions.get('screen').height;
 
-function LoginScreen({}: LoginScreenProps) {
+type AuthNavigation = StackNavigationProp<AuthStackParamList>;
+
+function LoginScreen() {
   const [isChecked, setIsChecked] = useState(false);
+  const navigation = useNavigation<AuthNavigation>();
+
+  const [isShow, setIsShow] = useState<boolean>(false);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -40,9 +47,10 @@ function LoginScreen({}: LoginScreenProps) {
             />
             <InputField
               placeholder="비밀번호"
-              secureTextEntry
+              secureTextEntry={!isShow}
               blurOnSubmit={false}
               error="비밀번호 에러 테스트"
+              icon={<ShowPasswordIcon isShow={isShow} setIsShow={setIsShow} />}
             />
           </View>
           <View style={styles.checkBoxContainer}>
@@ -69,15 +77,17 @@ function LoginScreen({}: LoginScreenProps) {
           <CustomButton label="로그인" />
         </View>
         <View style={styles.otherContainer}>
-          <Pressable>
+          <Pressable style={({pressed}) => pressed && styles.pressed}>
             <Text style={styles.otherText}>아이디찾기</Text>
           </Pressable>
           <View style={styles.divider} />
-          <Pressable>
+          <Pressable style={({pressed}) => pressed && styles.pressed}>
             <Text style={styles.otherText}>비밀번호찾기</Text>
           </Pressable>
           <View style={styles.divider} />
-          <Pressable>
+          <Pressable
+            style={({pressed}) => pressed && styles.pressed}
+            onPress={() => navigation.navigate(authNavigations.SIGN_UP)}>
             <Text style={styles.otherText}>회원가입</Text>
           </Pressable>
         </View>
@@ -162,6 +172,9 @@ const styles = StyleSheet.create({
   },
   otherText: {
     color: colors.GRAY_500,
+  },
+  pressed: {
+    opacity: 0.7,
   },
   divider: {
     width: 1,

@@ -4,8 +4,8 @@ import AuthHomeScreen from '@/screens/auth/AuthHomeScreen';
 import LoginScreen from '@/screens/auth/LoginScreen';
 import {createStackNavigator} from '@react-navigation/stack';
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import {StyleSheet} from 'react-native';
+import SignUpStackNavigator from './SignUpStackNavigator';
 
 export type AuthStackParamList = {
   [authNavigations.AUTH_HOME]: undefined;
@@ -38,6 +38,13 @@ function AuthStackNavigator() {
         component={LoginScreen}
         options={{
           headerTitle: ' ',
+        }}
+      />
+      <Stack.Screen
+        name={authNavigations.SIGN_UP}
+        component={SignUpStackNavigator}
+        options={{
+          headerShown: false,
         }}
       />
     </Stack.Navigator>
