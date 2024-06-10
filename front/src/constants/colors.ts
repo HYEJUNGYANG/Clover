@@ -8,6 +8,7 @@ const colors = {
   NAVER_COLOR: '#03C75A',
   GRAY_300: '#C5C5C5',
   GRAY_500: '#747474',
+  GRAY_600: '#555555',
   BLACK: '#000',
 };
 

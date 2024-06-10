@@ -1,0 +1,12 @@
+{
+  "editor.fontSize": 11,
+  "workbench.colorCustomizations": {
+    // 상단 타이틀바 배경색
+    "titleBar.activeBackground": "#0BE1A6",
+    "titleBar.inactiveBackground": "#0BE1A6",
+
+    // 상단 타이틀바 글자색
+    "titleBar.activeForeground": "#fff",
+    "titleBar.inactiveForeground": "#fff"
+  }
+}

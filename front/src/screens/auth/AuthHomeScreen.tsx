@@ -89,7 +89,9 @@ function AuthHomeScreen({navigation}: AuthHomeScreenProps) {
             ]}>
             이미 계정이 있으신가요?
           </Text>
-          <Pressable style={({pressed}) => [pressed && {opacity: 0.6}]}>
+          <Pressable
+            style={({pressed}) => [pressed && {opacity: 0.6}]}
+            onPress={() => navigation.navigate(authNavigations.LOGIN)}>
             <Text
               style={[
                 styles.loginText,
@@ -108,13 +110,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: colors.WHITE,
   },
   imageContainer: {
     flex: 1,
-    width: 116,
-    height: 116,
-    // backgroundColor: 'yellow',
+    width: styleValues.LOGO_SIZE,
+    height: styleValues.LOGO_SIZE,
   },
   imageContainerMargin: {
     marginBottom: 20,
