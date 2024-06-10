@@ -1,9 +1,11 @@
+import HeaderBackButton from '@/components/common/HeaderBackButton';
 import {authNavigations, colors} from '@/constants';
 import AuthHomeScreen from '@/screens/auth/AuthHomeScreen';
 import LoginScreen from '@/screens/auth/LoginScreen';
 import {createStackNavigator} from '@react-navigation/stack';
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 export type AuthStackParamList = {
   [authNavigations.AUTH_HOME]: undefined;
@@ -20,6 +22,7 @@ function AuthStackNavigator() {
         cardStyle: {
           backgroundColor: colors.WHITE,
         },
+        headerLeft: () => <HeaderBackButton />,
         headerShadowVisible: false,
       }}>
       <Stack.Screen
@@ -34,7 +37,7 @@ function AuthStackNavigator() {
         name={authNavigations.LOGIN}
         component={LoginScreen}
         options={{
-          headerTitle: '로그인',
+          headerTitle: ' ',
         }}
       />
     </Stack.Navigator>
