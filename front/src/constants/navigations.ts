@@ -15,4 +15,22 @@ const signUpNavigations = {
   SIGN_UP_AREA: 'SignUpArea',
 } as const;
 
-export {authNavigations, signUpNavigations};
+const mainNavigations = {
+  MAIN_HOME: 'MainHome',
+  MAIN_RECENT: 'MainRecent',
+  MAIN_HOT: 'MainHot',
+} as const;
+
+const mainTabNavigations = {
+  HOME: 'Home',
+  MY_CLUB: 'MyClub',
+  CALENDAR: 'Calendar',
+  MY_PAGE: 'MyPage',
+} as const;
+
+export {
+  authNavigations,
+  signUpNavigations,
+  mainNavigations,
+  mainTabNavigations,
+};

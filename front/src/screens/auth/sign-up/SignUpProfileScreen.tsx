@@ -5,44 +5,66 @@ import {Image, Pressable, StyleSheet, Text, View} from 'react-native';
 import {SignUpNavigation} from './SignUpNameScreen';
 import {colors, signUpNavigations, styleValues} from '@/constants';
 import InputField from '@/components/common/InputField';
+import useModal from '@/hooks/useModal';
+import SignUpProfileOption from '@/components/auth/SignUpProfileOption';
 
 interface SignUpProfileScreenProps {}
 
 function SignUpProfileScreen({}: SignUpProfileScreenProps) {
   const navigation = useNavigation<SignUpNavigation>();
+  const profileOption = useModal();
+  // 마크업 위해서 임시 값 지정용도
+  const isProfileImage = false;
 
   return (
-    <SignUpLayout
-      title="프로필을 등록해주세요."
-      progressOrder={7}
-      buttonAction={() => navigation.navigate(signUpNavigations.SIGN_UP_AREA)}>
-      <View style={styles.container}>
-        <Pressable style={({pressed}) => [pressed && styles.imagePressed]}>
-          {/* 마크업 때는 기본으로 해두고 추후 이미지 데이터 받아올 때는 경로 지정해주기 */}
-          <View style={styles.profileAlignContainer}>
-            <View style={styles.profileImageContainer}>
-              <Image
-                resizeMode="contain"
-                style={styles.profileImage}
-                source={require('@/assets/default-profile.png')}
-              />
-              <View style={styles.cameraButtonContainer}>
-                <View style={styles.cameraImageContainer}>
-                  <Image
-                    style={styles.cameraImage}
-                    source={require('@/assets/icon/camera-icon.png')}
-                  />
+    <>
+      <SignUpLayout
+        title="프로필을 등록해주세요."
+        progressOrder={7}
+        buttonAction={() =>
+          navigation.navigate(signUpNavigations.SIGN_UP_AREA)
+        }>
+        <View style={styles.container}>
+          <Pressable
+            style={({pressed}) => [pressed && styles.imagePressed]}
+            onPress={() => {
+              isProfileImage && profileOption.show();
+            }}>
+            {/* 마크업 때는 기본으로 해두고 추후 이미지 데이터 받아올 때는 경로 지정해주기 */}
+            <View style={styles.profileAlignContainer}>
+              <View style={styles.profileImageContainer}>
+                <Image
+                  resizeMode="cover"
+                  style={styles.profileImage}
+                  source={
+                    isProfileImage
+                      ? require('@/assets/kirby-profile.jpeg')
+                      : require('@/assets/default-profile.png')
+                  }
+                />
+                <View style={styles.cameraButtonContainer}>
+                  <View style={styles.cameraImageContainer}>
+                    <Image
+                      style={styles.cameraImage}
+                      source={require('@/assets/icon/camera-icon.png')}
+                    />
+                  </View>
                 </View>
               </View>
             </View>
-          </View>
-          <View style={styles.inputContainer}>
-            <Text style={styles.inputText}>닉네임</Text>
-            <InputField placeholder="닉네임" />
-          </View>
-        </Pressable>
-      </View>
-    </SignUpLayout>
+            <View style={styles.inputContainer}>
+              <Text style={styles.inputText}>닉네임</Text>
+              <InputField placeholder="닉네임" />
+            </View>
+          </Pressable>
+        </View>
+      </SignUpLayout>
+
+      <SignUpProfileOption
+        isVisible={profileOption.isVisible}
+        hideOption={profileOption.hide}
+      />
+    </>
   );
 }
 
