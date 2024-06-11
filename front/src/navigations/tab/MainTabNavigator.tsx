@@ -1,6 +1,9 @@
 import {colors, mainTabNavigations, mainNavigations} from '@/constants';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {RouteProp} from '@react-navigation/native';
+import {
+  RouteProp,
+  getFocusedRouteNameFromRoute,
+} from '@react-navigation/native';
 import React from 'react';
 import {
   Dimensions,
@@ -95,10 +98,24 @@ function MainTabNavigator() {
         tabBarShowLabel: false, // 탭 네비게이터 아이콘만 보이도록
         tabBarActiveTintColor: colors.MAIN_GREEN,
         tabBarIcon: ({focused}) => TabBarIcons(route, focused),
+        headerShown: false,
       })}>
       <Tab.Screen
         name={mainTabNavigations.HOME}
         component={MainStackNavigator}
+        options={({route}) => ({
+          // 현재 스크린이 어떤 스크린인지 판별 후, 탭바가 보여질 필요가 없는 곳에서는 보여지지 않도록
+          tabBarStyle: (tabRoute => {
+            const routeName = getFocusedRouteNameFromRoute(tabRoute);
+
+            if (
+              routeName === mainNavigations.MAIN_RECENT ||
+              routeName === mainNavigations.MAIN_HOT
+            ) {
+              return {display: 'none'};
+            }
+          })(route),
+        })}
       />
       <Tab.Screen
         name={mainTabNavigations.MY_CLUB}
