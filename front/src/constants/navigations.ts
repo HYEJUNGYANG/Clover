@@ -28,9 +28,15 @@ const mainTabNavigations = {
   MY_PAGE: 'MyPage',
 } as const;
 
+const mainSearchNavigations = {
+  MAIN_TAB: 'MainTab',
+  SEARCH: 'Search',
+} as const;
+
 export {
   authNavigations,
   signUpNavigations,
   mainNavigations,
   mainTabNavigations,
+  mainSearchNavigations,
 };

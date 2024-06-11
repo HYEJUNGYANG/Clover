@@ -1,13 +1,18 @@
+import ClubList from '@/components/main/ClubList';
+import {styleValues} from '@/constants';
 import React from 'react';
-import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
+import {SafeAreaView, ScrollView, StyleSheet, Text, View} from 'react-native';
 
 interface MainHotScreenProps {}
 
 function MainHotScreen({}: MainHotScreenProps) {
   return (
-    <SafeAreaView>
-      <Text>Main Hot Screen</Text>
-    </SafeAreaView>
+    <ScrollView>
+      <View
+        style={{paddingHorizontal: styleValues.CONTAINER_MARGIN_HORIZONTAL}}>
+        <ClubList />
+      </View>
+    </ScrollView>
   );
 }
 

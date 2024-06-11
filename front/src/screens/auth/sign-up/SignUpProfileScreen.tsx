@@ -14,7 +14,7 @@ function SignUpProfileScreen({}: SignUpProfileScreenProps) {
   const navigation = useNavigation<SignUpNavigation>();
   const profileOption = useModal();
   // 마크업 위해서 임시 값 지정용도
-  const isProfileImage = false;
+  const isProfileImage = true;
 
   return (
     <>

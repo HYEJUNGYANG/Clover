@@ -1,13 +1,13 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
 
 interface CalendarHomeScreenProps {}
 
 function CalendarHomeScreen({}: CalendarHomeScreenProps) {
   return (
-    <View>
+    <SafeAreaView>
       <Text>Calendar Home Page</Text>
-    </View>
+    </SafeAreaView>
   );
 }
 

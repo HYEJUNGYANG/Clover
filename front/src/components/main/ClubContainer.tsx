@@ -7,7 +7,7 @@ interface MainClubContainerProps {
 }
 
 // 동아리이름, 소개글, 카테고리, 지역, 인원수, 동아리프로필
-function MainClubContainer({isPadding = true}: MainClubContainerProps) {
+function ClubContainer({isPadding = true}: MainClubContainerProps) {
   return (
     <View style={[styles.container, isPadding && styles.containerPadding]}>
       <View style={styles.imageContainer}>
@@ -120,4 +120,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MainClubContainer;
+export default ClubContainer;

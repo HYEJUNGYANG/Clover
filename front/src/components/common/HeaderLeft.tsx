@@ -2,6 +2,9 @@ import React, {ReactNode} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import HeaderBackButton from './HeaderBackButton';
 import {colors, styleValues} from '@/constants';
+import {useNavigation} from '@react-navigation/native';
+import {StackNavigationProp} from '@react-navigation/stack';
+import {MainSearchStackParamList} from '@/navigations/stack/MainSearchStackNavigator';
 
 interface HeaderLeftProps {
   isBack?: boolean;

@@ -120,6 +120,9 @@ function MainTabNavigator() {
       <Tab.Screen
         name={mainTabNavigations.MY_CLUB}
         component={MyClubHomeScreen}
+        options={{
+          headerShown: true,
+        }}
       />
       <Tab.Screen
         name={mainTabNavigations.CALENDAR}

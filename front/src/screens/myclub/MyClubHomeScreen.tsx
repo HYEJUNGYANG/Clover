@@ -1,13 +1,13 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
 
 interface MyClubHomeScreenProps {}
 
 function MyClubHomeScreen({}: MyClubHomeScreenProps) {
   return (
-    <View>
+    <SafeAreaView>
       <Text>MyClub Home Page</Text>
-    </View>
+    </SafeAreaView>
   );
 }
 

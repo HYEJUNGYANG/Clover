@@ -1,10 +1,18 @@
-import {styleValues} from '@/constants';
+import {mainSearchNavigations, styleValues} from '@/constants';
+import {MainSearchStackParamList} from '@/navigations/stack/MainSearchStackNavigator';
+import {useNavigation} from '@react-navigation/native';
+import {StackNavigationProp} from '@react-navigation/stack';
 import React from 'react';
 import {Image, Pressable, StyleSheet, View} from 'react-native';
 
 interface HeaderRightProps {}
 
+export type MainSearchNavigation =
+  StackNavigationProp<MainSearchStackParamList>;
+
 function HeaderRight({}: HeaderRightProps) {
+  const navigation = useNavigation<MainSearchNavigation>();
+
   return (
     <View
       style={{
@@ -13,7 +21,8 @@ function HeaderRight({}: HeaderRightProps) {
         marginRight: styleValues.CONTAINER_MARGIN_HORIZONTAL,
         gap: 20,
       }}>
-      <Pressable>
+      <Pressable
+        onPress={() => navigation.navigate(mainSearchNavigations.SEARCH)}>
         <Image
           source={require('@/assets/icon/header-search-icon.png')}
           style={{width: 18.31, height: 20}}
