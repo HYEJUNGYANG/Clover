@@ -15,7 +15,12 @@ function HeaderLeft({isBack = true, title}: HeaderLeftProps) {
   return (
     <View style={{flexDirection: 'row', alignItems: 'center', gap: 10}}>
       {isBack && <HeaderBackButton />}
-      <View>
+      <View
+        style={[
+          isBack === false && {
+            marginLeft: styleValues.CONTAINER_MARGIN_HORIZONTAL,
+          },
+        ]}>
         <Text
           style={{
             fontSize: styleValues.H1_FONT_SIZE,

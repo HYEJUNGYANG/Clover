@@ -103,6 +103,7 @@ const styles = StyleSheet.create({
     shadowColor: colors.BLACK,
     shadowOpacity: 0.25,
     shadowOffset: {width: 0, height: 4},
+    elevation: 4,
   },
   cameraImageContainer: {
     width: 21,

@@ -23,7 +23,7 @@ const deviceWidth = Dimensions.get('screen').width;
 
 function SearchScreen({isClub = false}: SearchScreenProps) {
   const navigation = useNavigation<MainSearchNavigation>();
-  const isQuery = false; // 임시 설정 이후 아예 값받아와서 비교
+  const isQuery = true; // 임시 설정 이후 아예 값받아와서 비교
 
   return (
     <SafeAreaView style={styles.container}>
