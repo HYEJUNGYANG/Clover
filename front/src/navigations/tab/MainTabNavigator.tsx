@@ -5,20 +5,13 @@ import {
   getFocusedRouteNameFromRoute,
 } from '@react-navigation/native';
 import React from 'react';
-import {
-  Dimensions,
-  Image,
-  ImageSourcePropType,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import {Dimensions, Image, ImageSourcePropType, Text, View} from 'react-native';
 import MainStackNavigator from '../stack/MainStackNavigator';
 import CalendarHomeScreen from '@/screens/calendar/CalendarHomeScreen';
 import MyClubHomeScreen from '@/screens/myclub/MyClubHomeScreen';
-import MyPageHomeScreen from '@/screens/mypage/MyPageHomeScreen';
 import HeaderLeft from '@/components/common/HeaderLeft';
 import HeaderRight from '@/components/common/HeaderRight';
+import MyPageStackNavigator from '../stack/MyPageStackNavigator';
 
 export type MainTabParamList = {
   [mainTabNavigations.HOME]: {
@@ -136,7 +129,7 @@ function MainTabNavigator() {
       />
       <Tab.Screen
         name={mainTabNavigations.MY_PAGE}
-        component={MyPageHomeScreen}
+        component={MyPageStackNavigator}
       />
     </Tab.Navigator>
   );

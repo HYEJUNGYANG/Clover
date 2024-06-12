@@ -33,10 +33,18 @@ const mainSearchNavigations = {
   SEARCH: 'Search',
 } as const;
 
+const myPageNavigations = {
+  MYPAGE_HOME: 'MyPageHome',
+  PROFILE_EDIT: 'ProfileEdit',
+  HEART_LIST: 'HeartList',
+  CREATE_CLUB: 'CreateCLub',
+} as const;
+
 export {
   authNavigations,
   signUpNavigations,
   mainNavigations,
   mainTabNavigations,
   mainSearchNavigations,
+  myPageNavigations,
 };

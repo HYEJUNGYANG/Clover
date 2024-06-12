@@ -3,7 +3,7 @@ import {MainSearchStackParamList} from '@/navigations/stack/MainSearchStackNavig
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import React from 'react';
-import {Image, Pressable, StyleSheet, View} from 'react-native';
+import {Image, Pressable, SafeAreaView, StyleSheet, View} from 'react-native';
 
 interface HeaderRightProps {}
 
@@ -14,7 +14,7 @@ function HeaderRight({}: HeaderRightProps) {
   const navigation = useNavigation<MainSearchNavigation>();
 
   return (
-    <View
+    <SafeAreaView
       style={{
         flexDirection: 'row',
         alignItems: 'center',
@@ -34,7 +34,7 @@ function HeaderRight({}: HeaderRightProps) {
           style={{width: 20, height: 20}}
         />
       </Pressable>
-    </View>
+    </SafeAreaView>
   );
 }
 

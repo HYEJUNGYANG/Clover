@@ -112,6 +112,7 @@ function SearchScreen({isClub = false}: SearchScreenProps) {
             <Text style={styles.categoryText}>카테고리</Text>
             <FlatList
               data={categoryList}
+              scrollEnabled={false}
               columnWrapperStyle={{
                 gap: (deviceWidth - 55 * 4) / 4,
                 marginBottom: 20,
@@ -198,7 +199,7 @@ const styles = StyleSheet.create({
     fontSize: styleValues.H3_FONT_SIZE,
   },
   categoryContainer: {
-    marginTop: 22,
+    marginTop: 32,
   },
   categoryText: {
     color: colors.BLACK,

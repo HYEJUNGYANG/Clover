@@ -1,5 +1,5 @@
 import React, {ReactNode} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
 import HeaderBackButton from './HeaderBackButton';
 import {colors, styleValues} from '@/constants';
 import {useNavigation} from '@react-navigation/native';
@@ -13,7 +13,7 @@ interface HeaderLeftProps {
 
 function HeaderLeft({isBack = true, title}: HeaderLeftProps) {
   return (
-    <View style={{flexDirection: 'row', alignItems: 'center', gap: 10}}>
+    <SafeAreaView style={{flexDirection: 'row', alignItems: 'center', gap: 10}}>
       {isBack && <HeaderBackButton />}
       <View
         style={[
@@ -30,7 +30,7 @@ function HeaderLeft({isBack = true, title}: HeaderLeftProps) {
           {title}
         </Text>
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
 
