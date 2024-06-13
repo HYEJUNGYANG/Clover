@@ -1,4 +1,9 @@
-import {colors, mainTabNavigations, mainNavigations} from '@/constants';
+import {
+  colors,
+  mainTabNavigations,
+  mainNavigations,
+  calendarNavigations,
+} from '@/constants';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {
   RouteProp,
@@ -121,6 +126,16 @@ function MainTabNavigator() {
       <Tab.Screen
         name={mainTabNavigations.CALENDAR}
         component={CalendarStackNavigator}
+        options={({route}) => ({
+          // 현재 스크린이 어떤 스크린인지 판별 후, 탭바가 보여질 필요가 없는 곳에서는 보여지지 않도록
+          tabBarStyle: (tabRoute => {
+            const routeName = getFocusedRouteNameFromRoute(tabRoute);
+
+            if (routeName === calendarNavigations.SCHEDULE_ADD) {
+              return {display: 'none'};
+            }
+          })(route),
+        })}
       />
       <Tab.Screen
         name={mainTabNavigations.MY_PAGE}

@@ -1,7 +1,13 @@
+import HeaderBackButton from '@/components/common/HeaderBackButton';
 import HeaderLeft from '@/components/common/HeaderLeft';
 import {calendarNavigations, colors} from '@/constants';
 import CalendarHomeScreen from '@/screens/calendar/CalendarHomeScreen';
-import {createStackNavigator} from '@react-navigation/stack';
+import CalendarScheduleScreen from '@/screens/calendar/CalendarScheduleScreen';
+import {BlurView} from '@react-native-community/blur';
+import {
+  CardStyleInterpolators,
+  createStackNavigator,
+} from '@react-navigation/stack';
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
 
@@ -20,19 +26,27 @@ function CalendarStackNavigator() {
           backgroundColor: colors.WHITE,
         },
         headerShadowVisible: false,
+        headerMode: 'screen',
       }}>
       <Stack.Screen
         name={calendarNavigations.CALENDAR_HOME}
         component={CalendarHomeScreen}
         options={{
           headerTitle: ' ',
-          headerLeft: () => <HeaderLeft title="캘린더" isBack={false} />,
+        }}
+      />
+      <Stack.Screen
+        name={calendarNavigations.SCHEDULE_ADD}
+        component={CalendarScheduleScreen}
+        options={{
+          gestureDirection: 'vertical',
+          cardStyleInterpolator: CardStyleInterpolators.forVerticalIOS,
+          headerTitle: '일정',
+          headerLeft: () => <HeaderBackButton />,
         }}
       />
     </Stack.Navigator>
   );
 }
-
-const styles = StyleSheet.create({});
 
 export default CalendarStackNavigator;

@@ -1,8 +1,12 @@
 import Calendar from '@/components/calendar/Calendar';
-import {colors, styleValues} from '@/constants';
+import {calendarNavigations, colors, styleValues} from '@/constants';
+import {CalendarStackParamList} from '@/navigations/stack/CalendarStackNavigator';
+import useDateStore from '@/store/useDateStore';
 import {getMonthYearDetails, getNewMonthYear} from '@/utils';
 import {useBottomTabBarHeight} from '@react-navigation/bottom-tabs';
-import React, {useState} from 'react';
+import {useNavigation} from '@react-navigation/native';
+import {StackNavigationProp} from '@react-navigation/stack';
+import React, {useEffect, useState} from 'react';
 import {
   Image,
   Platform,
@@ -13,19 +17,28 @@ import {
   View,
 } from 'react-native';
 
+export type CalendarNavigation = StackNavigationProp<CalendarStackParamList>;
+
 function CalendarHomeScreen() {
+  const {monthYear, selectedDate, setMonthYear, setSelectedDate} =
+    useDateStore();
   const currentMonthYear = getMonthYearDetails(new Date());
-  const [monthYear, setMonthYear] = useState(currentMonthYear);
-  const [selectedDate, setSelectedDate] = useState(0);
-  const tabBarHeight = useBottomTabBarHeight();
-  const isAndroid = Platform.OS === 'android';
+
+  const navigation = useNavigation<CalendarNavigation>();
+
+  useEffect(() => {
+    setSelectedDate(new Date().getDate());
+    setMonthYear(currentMonthYear);
+  }, []);
 
   const handlePressDate = (date: number) => {
     setSelectedDate(date);
   };
 
   const handleUpdateMonth = (increment: number) => {
-    setMonthYear(prev => getNewMonthYear(prev, increment));
+    setMonthYear(
+      getNewMonthYear(monthYear ? monthYear : currentMonthYear, increment),
+    );
   };
 
   const moveToToday = () => {
@@ -37,23 +50,12 @@ function CalendarHomeScreen() {
     <SafeAreaView style={styles.container}>
       <View style={styles.alignContainer}>
         <Calendar
-          monthYear={monthYear}
+          monthYear={monthYear ? monthYear : currentMonthYear}
           onChangeMonth={handleUpdateMonth}
-          selectedDate={selectedDate}
+          selectedDate={selectedDate ? selectedDate : new Date().getDate()}
           onPressDate={handlePressDate}
           moveToToday={moveToToday}
         />
-        <Pressable
-          style={[
-            styles.plusButton,
-            {bottom: tabBarHeight + (isAndroid ? 25 : -10)},
-          ]}>
-          <Image
-            resizeMode="contain"
-            source={require('@/assets/icon/calendar/plus-icon.png')}
-            style={{width: 19, height: 19}}
-          />
-        </Pressable>
       </View>
     </SafeAreaView>
   );
@@ -65,24 +67,6 @@ const styles = StyleSheet.create({
   },
   alignContainer: {
     marginHorizontal: styleValues.CONTAINER_MARGIN_HORIZONTAL,
-  },
-  plusButton: {
-    zIndex: 10,
-    position: 'absolute',
-    right: 0,
-    backgroundColor: colors.MAIN_GREEN,
-    width: 45,
-    height: 45,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 45,
-    shadowColor: colors.BLACK,
-    shadowOffset: {
-      width: 3,
-      height: 2,
-    },
-    shadowOpacity: 0.15,
-    elevation: 3,
   },
 });
 

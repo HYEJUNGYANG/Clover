@@ -62,12 +62,21 @@ function isSameAsCurrentDate(year: number, month: number, date: number) {
   return currentDate === inputDate;
 }
 
+function getDayOfWeek(date: string) {
+  const day = ['일', '월', '화', '수', '목', '금', '토', '일'];
+
+  const dayOfWeek = new Date(date).getDay();
+
+  return day[dayOfWeek];
+}
+
 export {
   getDateWithSeparator,
   getDateLocaleFormat,
   getMonthYearDetails,
   getNewMonthYear,
   isSameAsCurrentDate,
+  getDayOfWeek,
 };
 
 export type {MonthYear};

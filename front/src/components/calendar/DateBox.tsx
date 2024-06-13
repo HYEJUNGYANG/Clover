@@ -1,4 +1,5 @@
 import {colors, styleValues} from '@/constants';
+import useModal from '@/hooks/useModal';
 import {useBottomTabBarHeight} from '@react-navigation/bottom-tabs';
 import {useHeaderHeight} from '@react-navigation/elements';
 import React from 'react';
@@ -10,7 +11,7 @@ import {
   Text,
   View,
 } from 'react-native';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import CalendarScheduleList from './CalendarScheduleList';
 
 interface DateBoxProps {
   date: number;
@@ -30,48 +31,64 @@ function DateBox({
   isToday,
   onPressDate,
 }: DateBoxProps) {
+  const scheduleList = useModal();
   const headerHeight = useHeaderHeight();
   const tabBarHeight = useBottomTabBarHeight();
 
   const isAndroid = Platform.OS === 'android';
 
+  const handleDatePressed = () => {
+    onPressDate(date);
+    scheduleList.show();
+  };
+
   return (
-    <Pressable
-      style={[
-        styles.container,
-        {
-          height:
-            (deviceHeight -
-              (headerHeight +
-                tabBarHeight +
-                55 +
-                (isAndroid ? 30 : 0) +
-                (numRows - 1) * 5)) /
-            numRows,
-        },
-        date > 0 && styles.showContainer,
-      ]}
-      onPress={() => onPressDate(date)}>
-      {date > 0 && (
-        <>
-          <View
-            style={[
-              styles.dateContainer,
-              selectedDate === date && styles.selectedContainer,
-              selectedDate === date && isToday && styles.selectedTodayContainer,
-            ]}>
-            <Text
+    <>
+      <Pressable
+        style={[
+          styles.container,
+          !scheduleList.isVisible && {zIndex: 10},
+          {
+            height:
+              (deviceHeight -
+                (headerHeight +
+                  tabBarHeight +
+                  55 +
+                  (isAndroid ? 30 : 0) +
+                  (numRows - 1) * 5)) /
+              numRows,
+          },
+          date > 0 && styles.showContainer,
+        ]}
+        onPress={handleDatePressed}>
+        {date > 0 && (
+          <>
+            <View
               style={[
-                styles.dateText,
-                isToday && styles.todayText,
-                selectedDate === date && styles.selectedDateText,
+                styles.dateContainer,
+                selectedDate === date && styles.selectedContainer,
+                selectedDate === date &&
+                  isToday &&
+                  styles.selectedTodayContainer,
               ]}>
-              {date}
-            </Text>
-          </View>
-        </>
-      )}
-    </Pressable>
+              <Text
+                style={[
+                  styles.dateText,
+                  isToday && styles.todayText,
+                  selectedDate === date && styles.selectedDateText,
+                ]}>
+                {date}
+              </Text>
+            </View>
+          </>
+        )}
+      </Pressable>
+
+      <CalendarScheduleList
+        isVisible={scheduleList.isVisible}
+        hide={scheduleList.hide}
+      />
+    </>
   );
 }
 
@@ -93,6 +110,7 @@ const styles = StyleSheet.create({
     width: 16,
     height: 16,
     borderRadius: 16,
+    overflow: 'hidden',
   },
   selectedContainer: {
     backgroundColor: colors.MAIN_GREEN,

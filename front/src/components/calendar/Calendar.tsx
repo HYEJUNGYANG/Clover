@@ -6,9 +6,9 @@ import {MonthYear, isSameAsCurrentDate} from '@/utils';
 import {FlatList} from 'react-native-gesture-handler';
 import DateBox from './DateBox';
 import {useNavigation} from '@react-navigation/native';
-import CalendarHomeHeaderRight from './CalendarHomeHeaderRight';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {useBottomTabBarHeight} from '@react-navigation/bottom-tabs';
+import CalendarHomeHeaderLeft from './CalendarHomeHeaderRight';
 
 interface CalendarProps<T> {
   monthYear: MonthYear;
@@ -34,7 +34,7 @@ function Calendar<T>({
 
   useEffect(() => {
     navigation.setOptions({
-      headerRight: () => CalendarHomeHeaderRight(year),
+      headerLeft: () => CalendarHomeHeaderLeft(year),
     });
   }, [moveToToday, year]);
 
@@ -83,18 +83,17 @@ function Calendar<T>({
           keyExtractor={item => String(item.id)}
           numColumns={7}
         />
-        {!isSameAsCurrentDate(year, month, selectedDate) &&
-          Boolean(selectedDate) && (
-            <Pressable
-              style={[
-                styles.goToTodayButton,
-                {bottom: tabBarHeight + 40 + (isAndroid ? 30 : -10)},
-              ]}
-              onPress={moveToToday}>
-              <Ionicons name="chevron-back" color={colors.BLACK} size={10} />
-              <Text style={styles.buttonText}>오늘</Text>
-            </Pressable>
-          )}
+        {!isSameAsCurrentDate(year, month, selectedDate) && (
+          <Pressable
+            style={[
+              styles.goToTodayButton,
+              {bottom: tabBarHeight + 40 + (isAndroid ? 30 : -10)},
+            ]}
+            onPress={moveToToday}>
+            <Ionicons name="chevron-back" color={colors.BLACK} size={10} />
+            <Text style={styles.buttonText}>오늘</Text>
+          </Pressable>
+        )}
       </View>
     </>
   );
