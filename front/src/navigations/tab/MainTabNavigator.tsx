@@ -12,6 +12,7 @@ import MyClubHomeScreen from '@/screens/myclub/MyClubHomeScreen';
 import HeaderLeft from '@/components/common/HeaderLeft';
 import HeaderRight from '@/components/common/HeaderRight';
 import MyPageStackNavigator from '../stack/MyPageStackNavigator';
+import CalendarStackNavigator from '../stack/CalendarStackNavigator';
 
 export type MainTabParamList = {
   [mainTabNavigations.HOME]: {
@@ -125,7 +126,7 @@ function MainTabNavigator() {
       />
       <Tab.Screen
         name={mainTabNavigations.CALENDAR}
-        component={CalendarHomeScreen}
+        component={CalendarStackNavigator}
       />
       <Tab.Screen
         name={mainTabNavigations.MY_PAGE}

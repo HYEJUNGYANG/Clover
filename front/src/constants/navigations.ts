@@ -40,6 +40,11 @@ const myPageNavigations = {
   CREATE_CLUB: 'CreateCLub',
 } as const;
 
+const calendarNavigations = {
+  CALENDAR_HOME: 'CalendarHome',
+  SCHEDULE_ADD: 'ScheduleAdd',
+} as const;
+
 export {
   authNavigations,
   signUpNavigations,
@@ -47,4 +52,5 @@ export {
   mainTabNavigations,
   mainSearchNavigations,
   myPageNavigations,
+  calendarNavigations,
 };

@@ -1,6 +1,6 @@
 import {MainSearchNavigation} from '@/components/common/HeaderRight';
-import {colors, mainSearchNavigations, styleValues} from '@/constants';
-import {categoryList} from '@/utils/category';
+import {colors, styleValues} from '@/constants';
+import {categoryList} from '@/utils';
 import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {
