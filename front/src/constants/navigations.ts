@@ -40,6 +40,10 @@ const myPageNavigations = {
   CREATE_CLUB: 'CreateCLub',
 } as const;
 
+const myClubNavigations = {
+  MYCLUB_HOME: 'MyClubHome',
+} as const;
+
 const calendarNavigations = {
   CALENDAR_HOME: 'CalendarHome',
   SCHEDULE_ADD: 'ScheduleAdd',
@@ -53,4 +57,5 @@ export {
   mainSearchNavigations,
   myPageNavigations,
   calendarNavigations,
+  myClubNavigations,
 };

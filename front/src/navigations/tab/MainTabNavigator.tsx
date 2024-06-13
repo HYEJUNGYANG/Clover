@@ -13,6 +13,7 @@ import HeaderLeft from '@/components/common/HeaderLeft';
 import HeaderRight from '@/components/common/HeaderRight';
 import MyPageStackNavigator from '../stack/MyPageStackNavigator';
 import CalendarStackNavigator from '../stack/CalendarStackNavigator';
+import MyClubStackNavigator from '../stack/MyClubStackNavigator';
 
 export type MainTabParamList = {
   [mainTabNavigations.HOME]: {
@@ -115,14 +116,7 @@ function MainTabNavigator() {
       />
       <Tab.Screen
         name={mainTabNavigations.MY_CLUB}
-        component={MyClubHomeScreen}
-        options={{
-          headerShown: true,
-          headerTitle: ' ',
-          headerLeft: () => <HeaderLeft title="내동아리" isBack={false} />,
-          headerRight: () => <HeaderRight />,
-          headerShadowVisible: false,
-        }}
+        component={MyClubStackNavigator}
       />
       <Tab.Screen
         name={mainTabNavigations.CALENDAR}
