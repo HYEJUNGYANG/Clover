@@ -49,6 +49,20 @@ const calendarNavigations = {
   SCHEDULE_ADD: 'ScheduleAdd',
 } as const;
 
+const clubNavigations = {
+  CLUB_PAGE: 'ClubPage',
+  MAIN: 'Main',
+  MY_CLUB_LIST: 'MyClubList',
+} as const;
+
+const clubTopTabNavigations = {
+  CLUB_HOME: 'ClubHome',
+  CLUB_INFO: 'ClubInfo',
+  CLUB_BOARD: 'ClubBoard',
+  CLUB_CALENDAR: 'ClubCalendar',
+  CLUB_MEMBER: 'ClubMember',
+} as const;
+
 export {
   authNavigations,
   signUpNavigations,
@@ -58,4 +72,6 @@ export {
   myPageNavigations,
   calendarNavigations,
   myClubNavigations,
+  clubNavigations,
+  clubTopTabNavigations,
 };

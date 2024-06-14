@@ -1,18 +1,27 @@
 import HeaderBackButton from '@/components/common/HeaderBackButton';
 import HeaderLeft from '@/components/common/HeaderLeft';
 import HeaderRight from '@/components/common/HeaderRight';
-import {colors, mainNavigations, styleValues} from '@/constants';
+import {
+  clubNavigations,
+  colors,
+  mainNavigations,
+  styleValues,
+} from '@/constants';
+import ClubScreen from '@/screens/club/ClubScreen';
 import MainHomeScreen from '@/screens/main/MainHomeScreen';
 import MainHotScreen from '@/screens/main/MainHotScreen';
 import MainRecentScreen from '@/screens/main/MainRecentScreen';
 import {createStackNavigator} from '@react-navigation/stack';
 import React from 'react';
 import {Image, Text, View} from 'react-native';
+import ClubTopTabNavigator from '../topTab/ClubTopTabNavigator';
+import ClubHeaderRight from '@/components/club/ClubHeaderRight';
 
 export type MainStackParamList = {
   [mainNavigations.MAIN_HOME]: undefined;
   [mainNavigations.MAIN_RECENT]: undefined;
   [mainNavigations.MAIN_HOT]: undefined;
+  [clubNavigations.CLUB_PAGE]: undefined;
 };
 
 const Stack = createStackNavigator<MainStackParamList>();
@@ -71,6 +80,15 @@ function MainStackNavigator() {
         options={{
           headerTitle: ' ',
           headerLeft: () => <HeaderLeft title="인기 동아리" />,
+        }}
+      />
+      <Stack.Screen
+        name={clubNavigations.CLUB_PAGE}
+        component={ClubTopTabNavigator}
+        options={{
+          headerTitle: ' ',
+          headerLeft: () => <HeaderLeft title="클로버" />,
+          headerRight: () => <ClubHeaderRight />,
         }}
       />
     </Stack.Navigator>

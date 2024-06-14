@@ -1,6 +1,8 @@
-import {colors, styleValues} from '@/constants';
+import {clubNavigations, colors, styleValues} from '@/constants';
+import {MainNavigation} from '@/screens/main/MainHomeScreen';
+import {useNavigation} from '@react-navigation/native';
 import React from 'react';
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {Image, Pressable, StyleSheet, Text, View} from 'react-native';
 
 interface MainClubContainerProps {
   isPadding?: boolean;
@@ -8,8 +10,13 @@ interface MainClubContainerProps {
 
 // 동아리이름, 소개글, 카테고리, 지역, 인원수, 동아리프로필
 function ClubContainer({isPadding = true}: MainClubContainerProps) {
+  const navigation = useNavigation<MainNavigation>();
+  const clubName = '클로버';
+
   return (
-    <View style={[styles.container, isPadding && styles.containerPadding]}>
+    <Pressable
+      style={[styles.container, isPadding && styles.containerPadding]}
+      onPress={() => navigation.navigate(clubNavigations.CLUB_PAGE)}>
       <View style={styles.imageContainer}>
         <Image
           source={require('@/assets/kirby-profile.jpeg')}
@@ -48,7 +55,7 @@ function ClubContainer({isPadding = true}: MainClubContainerProps) {
           </View>
         </View>
       </View>
-    </View>
+    </Pressable>
   );
 }
 

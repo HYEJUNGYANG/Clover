@@ -54,7 +54,13 @@ function CalendarScheduleList({isVisible, hide}: CalendarScheduleListProps) {
       />
       <SafeAreaView style={styles.container}>
         <View style={styles.alignContainer}>
-          <Text>{`${monthYear?.month}월 ${selectedDate}일`}</Text>
+          <Text
+            style={
+              styles.dateText
+            }>{`${monthYear?.month}월 ${selectedDate}일`}</Text>
+          <View style={styles.noneDateListContainer}>
+            <Text style={styles.noneDateListText}>일정이 없습니다.</Text>
+          </View>
         </View>
         <Pressable style={[styles.plusButton]} onPress={handlePlusButton}>
           <Image
@@ -86,6 +92,21 @@ const styles = StyleSheet.create({
   },
   alignContainer: {
     marginHorizontal: styleValues.CONTAINER_MARGIN_HORIZONTAL,
+  },
+  dateText: {
+    color: colors.BLACK,
+    fontSize: styleValues.H1_FONT_SIZE,
+    fontWeight: styleValues.H1_FONT_WEIGHT,
+    marginTop: styleValues.CONTAINER_MARGIN_HORIZONTAL,
+  },
+  noneDateListContainer: {
+    height: '80%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  noneDateListText: {
+    fontSize: styleValues.H3_FONT_SIZE,
+    color: '#C4C4C4',
   },
   plusButton: {
     zIndex: 1,

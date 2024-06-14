@@ -3,6 +3,7 @@ import {
   mainTabNavigations,
   mainNavigations,
   calendarNavigations,
+  clubNavigations,
 } from '@/constants';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {
@@ -112,7 +113,8 @@ function MainTabNavigator() {
 
             if (
               routeName === mainNavigations.MAIN_RECENT ||
-              routeName === mainNavigations.MAIN_HOT
+              routeName === mainNavigations.MAIN_HOT ||
+              routeName === clubNavigations.CLUB_PAGE
             ) {
               return {display: 'none'};
             }
