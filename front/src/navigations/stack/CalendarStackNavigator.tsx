@@ -39,6 +39,7 @@ function CalendarStackNavigator() {
         name={calendarNavigations.SCHEDULE_ADD}
         component={CalendarScheduleScreen}
         options={{
+          gestureEnabled: false,
           gestureDirection: 'vertical',
           cardStyleInterpolator: CardStyleInterpolators.forVerticalIOS,
           headerTitle: '일정',
