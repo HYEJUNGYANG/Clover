@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SplashIcon" translatesAutoresizingMaskIntoConstraints="NO" id="NVS-fV-uxE">
-                                <rect key="frame" x="126" y="362" width="150" height="150"/>
+                                <rect key="frame" x="126" y="290" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="KRf-ZU-oDv"/>
                                     <constraint firstAttribute="height" constant="150" id="qcx-PK-Rkd"/>
@@ -28,6 +28,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="NVS-fV-uxE" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="EJw-2z-VlZ"/>
+                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="bottom" secondItem="NVS-fV-uxE" secondAttribute="bottom" constant="400" id="VJl-GP-VLb"/>
                             <constraint firstItem="NVS-fV-uxE" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="qSc-OZ-oX3"/>
                         </constraints>
                     </view>
