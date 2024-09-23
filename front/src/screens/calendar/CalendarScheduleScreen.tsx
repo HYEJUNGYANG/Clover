@@ -77,6 +77,7 @@ function CalendarScheduleScreen({}: CalendarScheduleScreenProps) {
             />
             <TextInput
               placeholder="일정 이름을 입력해주세요."
+              placeholderTextColor={colors.GRAY_300}
               style={styles.dateNameInput}
             />
           </View>
@@ -95,6 +96,7 @@ function CalendarScheduleScreen({}: CalendarScheduleScreenProps) {
             <Text style={styles.title}>장소</Text>
             <TextInput
               placeholder="일정 장소를 입력해주세요."
+              placeholderTextColor={colors.GRAY_300}
               style={styles.placeInput}
             />
           </View>
@@ -102,6 +104,7 @@ function CalendarScheduleScreen({}: CalendarScheduleScreenProps) {
             multiline
             autoCapitalize="none"
             placeholder="일정 본문을 작성해주세요."
+            placeholderTextColor={colors.GRAY_300}
             style={styles.contentsInput}
           />
         </View>
