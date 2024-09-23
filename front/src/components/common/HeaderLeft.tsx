@@ -22,6 +22,7 @@ function HeaderLeft({isBack = true, title}: HeaderLeftProps) {
           },
         ]}>
         <Text
+          numberOfLines={1}
           style={{
             fontSize: styleValues.H1_FONT_SIZE,
             fontWeight: styleValues.H1_FONT_WEIGHT,

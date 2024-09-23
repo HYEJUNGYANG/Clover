@@ -1,8 +1,11 @@
 import CustomButton from '@/components/common/CustomButton';
 import HeaderLeft from '@/components/common/HeaderLeft';
 import HeaderRight from '@/components/common/HeaderRight';
-import {colors, styleValues} from '@/constants';
+import {clubNavigations, colors, styleValues} from '@/constants';
+import {MainStackParamList} from '@/navigations/stack/MainStackNavigator';
+import {ClubTopTabParamList} from '@/navigations/topTab/ClubTopTabNavigator';
 import {useNavigation} from '@react-navigation/native';
+import {StackNavigationProp, StackScreenProps} from '@react-navigation/stack';
 import React, {useEffect, useLayoutEffect} from 'react';
 import {
   Image,
@@ -16,18 +19,20 @@ import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 interface ClubInfoScreenProps {}
 
+type ClubScreenProps = StackScreenProps<
+  MainStackParamList,
+  typeof clubNavigations.CLUB_PAGE
+>;
+
+export type ClubNavigation = StackNavigationProp<
+  ClubTopTabParamList & MainStackParamList
+>;
+
 function ClubInfoScreen({}: ClubInfoScreenProps) {
-  const navigation = useNavigation();
+  const navigation = useNavigation<ClubNavigation>();
   const insets = useSafeAreaInsets();
   const isImage = true; // 임시
   const isJoined = true; // 임시
-
-  useEffect(() => {
-    navigation.setOptions({
-      HeaderTitle: '커비 좋아하는 사람 모여라',
-      HeaderRight: () => <HeaderRight />,
-    });
-  }, [navigation]);
 
   return (
     <SafeAreaView style={styles.container}>

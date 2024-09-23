@@ -17,8 +17,14 @@ const signUpNavigations = {
 
 const mainNavigations = {
   MAIN_HOME: 'MainHome',
+  AREA_CHANGE: 'AreaChange',
   MAIN_RECENT: 'MainRecent',
   MAIN_HOT: 'MainHot',
+} as const;
+
+const mainHomeNavigations = {
+  HOME_PAGE: 'HomePage',
+  AREA_CHANGE: 'AreaChange',
 } as const;
 
 const mainTabNavigations = {
@@ -67,6 +73,7 @@ export {
   authNavigations,
   signUpNavigations,
   mainNavigations,
+  mainHomeNavigations,
   mainTabNavigations,
   mainSearchNavigations,
   myPageNavigations,

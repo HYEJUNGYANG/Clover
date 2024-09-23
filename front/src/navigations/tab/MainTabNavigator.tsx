@@ -4,6 +4,7 @@ import {
   mainNavigations,
   calendarNavigations,
   clubNavigations,
+  mainHomeNavigations,
 } from '@/constants';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {
@@ -13,13 +14,10 @@ import {
 import React from 'react';
 import {Dimensions, Image, ImageSourcePropType, Text, View} from 'react-native';
 import MainStackNavigator from '../stack/MainStackNavigator';
-import CalendarHomeScreen from '@/screens/calendar/CalendarHomeScreen';
-import MyClubHomeScreen from '@/screens/myclub/MyClubHomeScreen';
-import HeaderLeft from '@/components/common/HeaderLeft';
-import HeaderRight from '@/components/common/HeaderRight';
 import MyPageStackNavigator from '../stack/MyPageStackNavigator';
 import CalendarStackNavigator from '../stack/CalendarStackNavigator';
 import MyClubStackNavigator from '../stack/MyClubStackNavigator';
+import {getViewProp} from 'react-native-reanimated';
 
 export type MainTabParamList = {
   [mainTabNavigations.HOME]: {
@@ -37,7 +35,7 @@ type tabNameList = '홈' | '내동아리' | '캘린더' | '마이페이지';
 const deviceWidth = Dimensions.get('screen').width;
 
 function TabBarIcons(route: RouteProp<MainTabParamList>, focused: boolean) {
-  let tabName = '';
+  let tabName = '' as tabNameList;
   let imgUrl: ImageSourcePropType | undefined;
 
   switch (route.name) {
@@ -112,6 +110,7 @@ function MainTabNavigator() {
             const routeName = getFocusedRouteNameFromRoute(tabRoute);
 
             if (
+              routeName === mainNavigations.AREA_CHANGE ||
               routeName === mainNavigations.MAIN_RECENT ||
               routeName === mainNavigations.MAIN_HOT ||
               routeName === clubNavigations.CLUB_PAGE

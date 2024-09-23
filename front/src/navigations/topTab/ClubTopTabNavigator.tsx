@@ -11,10 +11,8 @@ import ClubInfoScreen from '@/screens/club/ClubInfoScreen';
 import ClubBoardScreen from '@/screens/club/ClubBoardScreen';
 import ClubCalendarScreen from '@/screens/club/ClubCalendarScreen';
 import ClubMemberScreen from '@/screens/club/ClubMemberScreen';
-import ClubHeaderRight from '@/components/club/ClubHeaderRight';
 
 export type ClubTopTabParamList = {
-  [clubTopTabNavigations.CLUB_HOME]: undefined;
   [clubTopTabNavigations.CLUB_INFO]: undefined;
   [clubTopTabNavigations.CLUB_BOARD]: undefined;
   [clubTopTabNavigations.CLUB_CALENDAR]: undefined;
@@ -26,7 +24,7 @@ const TopTab = createMaterialTopTabNavigator<ClubTopTabParamList>();
 function ClubTopTabNavigator() {
   return (
     <TopTab.Navigator
-      initialRouteName={clubTopTabNavigations.CLUB_HOME}
+      initialRouteName={clubTopTabNavigations.CLUB_INFO}
       screenOptions={{
         tabBarActiveTintColor: colors.MAIN_GREEN, // 선택된 탭바 텍스트 컬러
         tabBarInactiveTintColor: '#A2A2A2', // 선택되지 않은 상태인 탭바 텍스트 컬러

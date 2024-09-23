@@ -11,12 +11,14 @@ interface MainClubContainerProps {
 // 동아리이름, 소개글, 카테고리, 지역, 인원수, 동아리프로필
 function ClubContainer({isPadding = true}: MainClubContainerProps) {
   const navigation = useNavigation<MainNavigation>();
-  const clubName = '클로버';
+  const clubName = '커비 좋아하는 사람 모여라';
 
   return (
     <Pressable
       style={[styles.container, isPadding && styles.containerPadding]}
-      onPress={() => navigation.navigate(clubNavigations.CLUB_PAGE)}>
+      onPress={() =>
+        navigation.navigate(clubNavigations.CLUB_PAGE, {clubName})
+      }>
       <View style={styles.imageContainer}>
         <Image
           source={require('@/assets/kirby-profile.jpeg')}
