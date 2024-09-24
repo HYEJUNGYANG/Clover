@@ -1,7 +1,14 @@
 import ClubRadioButton from '@/components/club/ClubRadioButton';
 import {colors, styleValues} from '@/constants';
 import React, {useState} from 'react';
-import {Image, SafeAreaView, StyleSheet, Text, View} from 'react-native';
+import {
+  Image,
+  SafeAreaView,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 
 interface ClubBoardScreenProps {}
 
